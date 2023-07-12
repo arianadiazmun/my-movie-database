@@ -1,3 +1,16 @@
+
+
+export function generateStaticParams() {
+    return [
+      { genre: "comedy", number: 6 },
+      { genre: "drama", number: 6 },
+      { genre: "horror", number: 6 },
+    ];
+  }
+
+
+
+
 export default function Page({ params: { genre } }) {
   return (
     <main className="p-8">

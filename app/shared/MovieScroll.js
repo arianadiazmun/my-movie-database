@@ -21,33 +21,35 @@ const movies = [
     imdbId: "tt7014006",
   },
 ];
+async function getData(genre) {
+  const res = await fetch(`https://api.sampleapis.com/movies/${genre}`);
+  return res.json();
+}
 
-export default function MovieScroll({ genre, number }) {
+import MovieCard from "./MovieCard";
+
+export function generateStaticParams() {
+  return [
+    { genre: "comedy", number: 6 },
+    { genre: "drama", number: 6 },
+    { genre: "horror", number: 6 },
+  ];
+}
+
+export default async function MovieScroll({ genre, number }) {
+  const allMovies = await getData(genre);
+
+  const movies = allMovies.slice(allMovies.length - number);
+
   return (
     <section className="text-zinc-400">
-      <div className="container px-5 py-24 mx-auto">
+      <div className="container px-5 py-12 mx-auto">
         <h2 className="capitalize font-medium title-font mb-4 text-zinc-50 text-xl">
           {genre}
         </h2>
         <div className="flex flex-wrap -m-4">
           {movies.map((movie) => (
-            <div key={movie.id} className="-p-4 sm:w-1/2 lg:w-1/3">
-              <div className="flex-relative">
-                <img
-                  src={movie.posterURL}
-                  alt={movie.title}
-                  className="absolute inset-0 w-full h-full object-cover object-center"
-                />
-                <div className="px-8 py-10 relative z-10 w-full border-4 border-zinc-400 bg-zinc-900 opacity-0 hover:opacity-100">
-                  <h4 className="capitalize tracking-widest text-sm title-font font-meidum text-orange-400 mb-1">
-                    {genre}
-                  </h4>
-                  <h3 className="tracking-widest text-sm title-font font-medium text-orange-400 mb-1">
-                    {movie.title}
-                  </h3>
-                </div>
-              </div>
-            </div>
+            <MovieCard key={movie.id} movie={movie} genre={genre} />
           ))}
         </div>
       </div>
