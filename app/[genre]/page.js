@@ -1,3 +1,4 @@
+import MovieScroll from "../shared/MovieScroll";
 
 
 export function generateStaticParams() {
@@ -8,6 +9,13 @@ export function generateStaticParams() {
     ];
   }
 
+  export function generateMetaData ({params: {genre}}){
+    return {
+        title: `My ${genre} Movie Database`,
+        description: `Here are some of my favorite ${genre} movies.`,
+
+    }
+  }
 
 
 
@@ -17,6 +25,7 @@ export default function Page({ params: { genre } }) {
       <h1 className="capitalize text-2xl text-orange-400 font-semi-bold">
         {genre} Movies
       </h1>
+      <MovieScroll genre={genre} number={12}/>
     </main>
   );
 }
