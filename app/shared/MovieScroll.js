@@ -1,26 +1,4 @@
-const movies = [
-  {
-    id: 1,
-    title: "Lady Bird",
-    posterURL:
-      "https://m.media-amazon.com/images/M/MV5BODhkZGE0NDQtZDc0Zi00YmQ4LWJiNmUtYTY1OGM1ODRmNGVkXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
-    imdbId: "tt4925292",
-  },
-  {
-    id: 5,
-    title: "Coco",
-    posterURL:
-      "https://m.media-amazon.com/images/M/MV5BYjQ5NjM0Y2YtNjZkNC00ZDhkLWJjMWItN2QyNzFkMDE3ZjAxXkEyXkFqcGdeQXVyODIxMzk5NjA@._V1_SX300.jpg",
-    imdbId: "tt2380307",
-  },
-  {
-    id: 4,
-    title: "Eighth Grade",
-    posterURL:
-      "https://m.media-amazon.com/images/M/MV5BMzVlYzgxYjAtYzhhZi00MDc1LTlkZDMtMTRhZWI0MTg5YTRjXkEyXkFqcGdeQXVyNTAzMTY4MDA@._V1_SX300.jpg",
-    imdbId: "tt7014006",
-  },
-];
+
 async function getData(genre) {
   const res = await fetch(`https://api.sampleapis.com/movies/${genre}`);
   return res.json();

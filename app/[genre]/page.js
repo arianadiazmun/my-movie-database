@@ -3,9 +3,9 @@ import MovieScroll from "../shared/MovieScroll";
 
 export function generateStaticParams() {
     return [
-      { genre: "comedy", number: 6 },
-      { genre: "drama", number: 6 },
-      { genre: "horror", number: 6 },
+      { genre: "comedy" },
+      { genre: "drama" },
+      { genre: "horror" },
     ];
   }
 
